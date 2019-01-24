@@ -1,7 +1,7 @@
 // CODE here for your Lambda Classes
 
 const randomNumber = function randomizeGrade(max) {
-	let plusOrMinus = Math.random() < 0.35 ? -1 : 1;
+	let plusOrMinus = Math.random() < 0.2 ? -1 : 1;
 	let randomPoints = Math.floor(Math.random() * Math.floor(max));
 	return plusOrMinus * randomPoints;
 };
@@ -42,11 +42,21 @@ class Student extends Person {
 			console.log(`${this.name} graduates!!!!`);
 		} else {
 			gradingInstructor().gradeStudent(this);
-			console.log(
-				`${gradingInstructor().name}: "${this.name} you have ${
-					this.grade
-				}/100 which is not enought points mate. We are going to grade your latest test and we will see. Try to check again soon."`
-			);
+			if (this.grade < 70) {
+				console.log(
+					`${gradingInstructor().name}: "${this.name} you have ${
+						this.grade
+					}/100 which is not enought points mate. We are going to grade your latest test and we will see. Try to check again soon."`
+				);
+			} else {
+				console.log(
+					`${gradingInstructor().name}: "${
+						this.name
+					} I've just graded your task and all together you have ${
+						this.grade
+					}/100 points, which means, that you are graduating. Congrats!!!"`
+				);
+			}
 		}
 	}
 }
@@ -75,7 +85,9 @@ class Instructor extends Person {
 			student.grade += points;
 		}
 
-		return `${student.name} : ${student.grade}`;
+		return `${student.name}got ${points} points from ${
+			this.name
+		}. Together you have ${student.grade} points.`;
 	}
 }
 
@@ -126,7 +138,7 @@ const severus = new Student({
 	previousBackground: "Accountant",
 	className: "WEBEU5",
 	favSubjects: ["Redux", "Javascript", "CS"],
-	grade: 20
+	grade: 40
 });
 
 //INSTRUCTORS
@@ -233,5 +245,7 @@ console.log(penelope.debugsCode(sabrina, "Preprocessors"));
 console.log(peter.speak());
 
 //STRETCH TASKS
+console.log(severus.graduate());
+console.log(severus.graduate());
 console.log(severus.graduate());
 console.log(ilana.gradeStudent(sam));
