@@ -20,10 +20,10 @@ class Instructor extends Person {
 		this.catchPhrase = att.catchPhrase;
 	}
 	demo(subject) {
-		console.log(`Today we are leasning about ${subject}.`);
+		console.log(`Today we are learning about ${subject}.`);
 	}
 	grade(student, subject) {
-		console.log(`${student.name} receives a perfect score on ${subject}`);
+		console.log(`${student.name} receives a perfect score on ${subject}.`);
 	}
 }
 
@@ -40,10 +40,10 @@ class Student extends Person {
 		}
 	}
 	PRAssignment(subject) {
-		console.log(`${this.name} has submitted a PR for ${subject}`);
+		console.log(`${this.name} has submitted a PR for ${subject}.`);
 	}
 	sprintChallenge(subject) {
-		console.log(`${this.name} has began sprint challenfe on ${subject}`);
+		console.log(`${this.name} has began sprint challenfe on ${subject}.`);
 	}
 }
 
@@ -59,7 +59,7 @@ class ProjectManager extends Instructor {
 		);
 	}
 	debugsCode(student, subject) {
-		console.log(`${this.name} debugs ${student.name}'s code on ${subject}`);
+		console.log(`${this.name} debugs ${student.name}'s code on ${subject}.`);
 	}
 }
 
@@ -163,3 +163,23 @@ const penelope = new ProjectManager({
 	gradClassName: "WEB4",
 	favInstructor: "Ibrahim"
 });
+
+//TESTING OUT STUDENTS
+
+console.log(sam);
+console.log(sam.listsSubjects());
+console.log(sabrina.PRAssignment("Javascript II"));
+console.log(severus.sprintChallenge("React"));
+console.log(severus.speak());
+
+//TESTING OUT INSTRUCTORS
+console.log(ibrahim);
+console.log(ilana.grade(sabrina, "Redux"));
+console.log(ivor.demo("React"));
+console.log(ibrahim.speak());
+
+//TESTING OUT PMs
+console.log(peter);
+console.log(patrick.standUp("#WEBEU1"));
+console.log(penelope.debugsCode(sabrina, "Preprocessors"));
+console.log(peter.speak());
