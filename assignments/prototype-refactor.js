@@ -99,6 +99,16 @@ class Humanoid extends characterStats {
 	greet() {
 		return `${this.name} offers a greeting in ${this.language}`;
 	}
+	fight(name) {
+		name.healthPoints--;
+		if (name.healthPoints <= 0) {
+			name.isAlive = false;
+			console.log(`${name.name} is dead.`);
+			return name.destroy();
+		}
+		console.log(`${name.name}'s health points: ${name.healthPoints}`);
+		return name.takeDamage();
+	}
 }
 
 /*
@@ -164,30 +174,35 @@ console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.
 
 // Stretch task:
 // * Create Villain and Hero constructor functions that inherit from the Humanoid constructor function.
-function Villain(attributes) {
-	Humanoid.call(this, attributes);
-}
+// function Villain(attributes) {
+// 	Humanoid.call(this, attributes);
+// }
 
-Villain.prototype = Object.create(Humanoid.prototype);
+// Villain.prototype = Object.create(Humanoid.prototype);
 
-function Hero(attributes) {
-	Humanoid.call(this, attributes);
-}
-Hero.prototype = Object.create(Humanoid.prototype);
+// function Hero(attributes) {
+// 	Humanoid.call(this, attributes);
+// }
+// Hero.prototype = Object.create(Humanoid.prototype);
+
+class Hero extends Humanoid {}
+
+class Villain extends Humanoid {}
 
 // * Give the Hero and Villains different methods that could be used to remove health points from objects which could result in destruction if health gets to 0 or drops below 0;
 
-Humanoid.prototype.fight = function(name) {
-	name.healthPoints--;
-	if (name.healthPoints <= 0) {
-		name.isAlive = false;
-		console.log(`${name.name} is dead.`);
-		return name.destroy();
-	}
-	console.log(`${name.name}'s health points: ${name.healthPoints}`);
-	return name.takeDamage();
-};
+// Humanoid.prototype.fight = function(name) {
+// 	name.healthPoints--;
+// 	if (name.healthPoints <= 0) {
+// 		name.isAlive = false;
+// 		console.log(`${name.name} is dead.`);
+// 		return name.destroy();
+// 	}
+// 	console.log(`${name.name}'s health points: ${name.healthPoints}`);
+// 	return name.takeDamage();
+// };
 // * Create two new objects, one a villain and one a hero and fight it out with methods!
+
 const batman = new Hero({
 	createdAt: new Date(),
 	dimensions: {
