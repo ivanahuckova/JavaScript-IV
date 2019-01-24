@@ -40,16 +40,16 @@ class Student extends Person {
 		}
 	}
 	PRAssignment(subject) {
-		console.log(`${student.name} has submitted a PR for ${subject}`);
+		console.log(`${this.name} has submitted a PR for ${subject}`);
 	}
 	sprintChallenge(subject) {
-		console.log(`${student.name} has began sprint challenfe on ${subject}`);
+		console.log(`${this.name} has began sprint challenfe on ${subject}`);
 	}
 }
 
 class ProjectManager extends Instructor {
-	constructor(attr) {
-		super();
+	constructor(att) {
+		super(att);
 		this.gradClassName = att.gradClassName;
 		this.favInstructor = att.favInstructor;
 	}
@@ -63,18 +63,103 @@ class ProjectManager extends Instructor {
 	}
 }
 
-const personTest = new Instructor({
-	name: "Ivana",
-	age: 29,
-	location: "Slovakia",
+//STUDENTS
+const sabrina = new Student({
+	name: "Sabrina",
+	age: "45",
+	location: "France",
 	gender: "Female",
-	speciality: "Frontend",
-	FavLanguage: "Javascript",
-	catchPhrase: "Salalala"
+	previousBackground: "Lawyer",
+	className: "WEBEU1",
+	favSubjects: ["React", "Python", "CS"]
 });
 
-//STUDENTS
+const sam = new Student({
+	name: "Sam",
+	age: "27",
+	location: "Belgium",
+	gender: "Male",
+	previousBackground: "Doctor",
+	className: "WEBEU3",
+	favSubjects: ["Redux", "Javascript", "CS"]
+});
+
+const severus = new Student({
+	name: "Severus",
+	age: "89",
+	location: "Finland",
+	gender: "Male",
+	previousBackground: "Accountant",
+	className: "WEBEU5",
+	favSubjects: ["Redux", "Javascript", "CS"]
+});
 
 //INSTRUCTORS
 
-//PMS
+const ilana = new Instructor({
+	name: "Ilana",
+	age: "29",
+	location: "USA",
+	gender: "Female",
+	speciality: "Machine Learning",
+	favLanguage: "Python",
+	catchPhrase: "You go!"
+});
+
+const ibrahim = new Instructor({
+	name: "Ibrahim",
+	age: "46",
+	location: "USA",
+	gender: "Male",
+	speciality: "Frontend",
+	favLanguage: "Javascript",
+	catchPhrase: "Try harder!"
+});
+
+const ivor = new Instructor({
+	name: "Ivor",
+	age: "52",
+	location: "USA",
+	gender: "Male",
+	speciality: "Backend",
+	favLanguage: "Python",
+	catchPhrase: "Don't forget the homies"
+});
+
+//PM
+
+const peter = new ProjectManager({
+	name: "Peter",
+	age: "32",
+	location: "Canada",
+	gender: "Male",
+	speciality: "Data Science",
+	favLanguage: "Python",
+	catchPhrase: "Have fun",
+	gradClassName: "CS1",
+	favInstructor: "Ivor"
+});
+
+const patrick = new ProjectManager({
+	name: "Patrick",
+	age: "38",
+	location: "Argentina",
+	gender: "Male",
+	speciality: "Frontend",
+	favLanguage: "Javascript",
+	catchPhrase: "Take it easy",
+	gradClassName: "CS4",
+	favInstructor: "Ilana"
+});
+
+const penelope = new ProjectManager({
+	name: "Penelope",
+	age: "23",
+	location: "Russia",
+	gender: "Female",
+	speciality: "Frontend",
+	favLanguage: "Javascript",
+	catchPhrase: "Work hard play hard",
+	gradClassName: "WEB4",
+	favInstructor: "Ibrahim"
+});
