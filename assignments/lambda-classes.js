@@ -1,10 +1,25 @@
-// CODE here for your Lambda Classes
+//=====Global Functions=====
 
-const randomNumber = function randomizeGrade(max) {
-	let plusOrMinus = Math.random() < 0.2 ? -1 : 1;
-	let randomPoints = Math.floor(Math.random() * Math.floor(max));
-	return plusOrMinus * randomPoints;
-};
+function randomizeNumber(max) {
+	let posOrNeg = Math.random() < 0.2 ? -1 : 1;
+	let randomNumber = Math.floor(Math.random() * Math.floor(max));
+	return posOrNeg * randomNumber;
+}
+
+function gradingInstructor() {
+	instructorsAndProjectManagers = [];
+	instructorsAndProjectManagers.push(
+		ilana,
+		ibrahim,
+		ivor,
+		peter,
+		patrick,
+		penelope
+	);
+	return instructorsAndProjectManagers[Math.abs(randomizeNumber(5))];
+}
+
+//=====Classes=====
 
 class Person {
 	constructor(att) {
@@ -76,7 +91,7 @@ class Instructor extends Person {
 	}
 
 	gradeStudent(student) {
-		let points = randomNumber(20);
+		let points = randomizeNumber(20);
 		if (student.grade + points > 100) {
 			student.grade = 100;
 		} else if (student.grade + points < 0) {
@@ -85,7 +100,7 @@ class Instructor extends Person {
 			student.grade += points;
 		}
 
-		return `${student.name}got ${points} points from ${
+		return `${student.name} got ${points} points from ${
 			this.name
 		}. Together you have ${student.grade} points.`;
 	}
@@ -107,7 +122,9 @@ class ProjectManager extends Instructor {
 	}
 }
 
-//STUDENTS
+//=====Specific Objects=====
+//Students
+
 const sabrina = new Student({
 	name: "Sabrina",
 	age: "45",
@@ -141,7 +158,7 @@ const severus = new Student({
 	grade: 40
 });
 
-//INSTRUCTORS
+//Instructors
 
 const ilana = new Instructor({
 	name: "Ilana",
@@ -173,7 +190,7 @@ const ivor = new Instructor({
 	catchPhrase: "Don't forget the homies"
 });
 
-//PM
+//Project Managers
 
 const peter = new ProjectManager({
 	name: "Peter",
@@ -211,20 +228,8 @@ const penelope = new ProjectManager({
 	favInstructor: "Ibrahim"
 });
 
-const gradingInstructor = function whichInstructor() {
-	instructorsAndProjectManagers = [];
-	instructorsAndProjectManagers.push(
-		ilana,
-		ibrahim,
-		ivor,
-		peter,
-		patrick,
-		penelope
-	);
-	return instructorsAndProjectManagers[Math.abs(randomNumber(5))];
-};
-
-//TESTING OUT STUDENTS
+//=====Testing=====
+//Students
 
 console.log(sam);
 console.log(sam.listsSubjects());
@@ -232,19 +237,19 @@ console.log(sabrina.PRAssignment("Javascript II"));
 console.log(severus.sprintChallenge("React"));
 console.log(severus.speak());
 
-//TESTING OUT INSTRUCTORS
+//Instructors
 console.log(ibrahim);
 console.log(ilana.grade(sabrina, "Redux"));
 console.log(ivor.demo("React"));
 console.log(ibrahim.speak());
 
-//TESTING OUT PMs
+//Project Managers
 console.log(peter);
 console.log(patrick.standUp("#WEBEU1"));
 console.log(penelope.debugsCode(sabrina, "Preprocessors"));
 console.log(peter.speak());
 
-//STRETCH TASKS
+//Stretch tasks - graduate + gradeStudent methods
 console.log(severus.graduate());
 console.log(severus.graduate());
 console.log(severus.graduate());
