@@ -1,5 +1,11 @@
 // CODE here for your Lambda Classes
 
+const randomNumber = function randomizeGrade(max) {
+	let plusOrMinus = Math.random() < 0.35 ? -1 : 1;
+	let randomPoints = Math.floor(Math.random() * Math.floor(max));
+	return plusOrMinus * randomPoints;
+};
+
 class Person {
 	constructor(att) {
 		this.name = att.name;
@@ -35,11 +41,11 @@ class Student extends Person {
 		if (this.grade > 70) {
 			console.log(`${this.name} graduates!!!!`);
 		} else {
-			ilana.gradeStudent(this);
+			gradingInstructor().gradeStudent(this);
 			console.log(
-				`${this.name} you have ${
+				`${gradingInstructor().name}: "${this.name} you have ${
 					this.grade
-				}/100 which is not enought points mate. But I am going to grade your latest test and we will see. Try to check again soon.`
+				}/100 which is not enought points mate. We are going to grade your latest test and we will see. Try to check again soon."`
 			);
 		}
 	}
@@ -60,12 +66,7 @@ class Instructor extends Person {
 	}
 
 	gradeStudent(student) {
-		const randomNumber = function randomizeGrade() {
-			let plusOrMinus = Math.random() < 0.35 ? -1 : 1;
-			let randomPoints = Math.floor(Math.random() * Math.floor(20));
-			return plusOrMinus * randomPoints;
-		};
-		let points = randomNumber();
+		let points = randomNumber(20);
 		if (student.grade + points > 100) {
 			student.grade = 100;
 		} else if (student.grade + points < 0) {
@@ -198,6 +199,19 @@ const penelope = new ProjectManager({
 	favInstructor: "Ibrahim"
 });
 
+const gradingInstructor = function whichInstructor() {
+	instructorsAndProjectManagers = [];
+	instructorsAndProjectManagers.push(
+		ilana,
+		ibrahim,
+		ivor,
+		peter,
+		patrick,
+		penelope
+	);
+	return instructorsAndProjectManagers[Math.abs(randomNumber(5))];
+};
+
 //TESTING OUT STUDENTS
 
 console.log(sam);
@@ -217,3 +231,7 @@ console.log(peter);
 console.log(patrick.standUp("#WEBEU1"));
 console.log(penelope.debugsCode(sabrina, "Preprocessors"));
 console.log(peter.speak());
+
+//STRETCH TASKS
+console.log(severus.graduate());
+console.log(ilana.gradeStudent(sam));
